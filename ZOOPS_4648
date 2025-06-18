@@ -1,0 +1,34 @@
+*&---------------------------------------------------------------------*
+*& Report ZOOPS_4648
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZOOPS_4648.
+
+CLASS employee DEFINITION.
+  PUBLIC SECTION.
+     DATA: first_name TYPE string.
+     DATA: emp_id TYPE i.
+
+     METHODS: insert_emp_data.
+     METHODS: display_emp_det.
+ENDCLASS.
+
+CLASS employee IMPLEMENTATION.
+  METHOD insert_emp_data.
+    first_name = 'John jacob'.
+    emp_id = 45.
+  ENDMETHOD.
+
+  METHOD display_emp_det.
+    write: first_name.
+    WRITE: / emp_id.
+  ENDMETHOD.
+ENDCLASS.
+
+START-OF-SELECTION.
+DATA: emp1 TYPE REF TO employee.
+CREATE OBJECT emp1.
+
+emp1->insert_emp_data( ).
+emp1->display_emp_det( ).
